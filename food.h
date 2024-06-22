@@ -1,28 +1,27 @@
+#pragma once
+
 #include <raylib.h>
-#include <deque>
+#include "snake.h"
 
 extern const int cellSize;
 extern const int cellCount;
 extern const int offset;
 
-
-extern bool ElementInDeque(Vector2 element, std::deque<Vector2> deque);
-
 class Food
 {
 public:
-    Vector2 position;
+    MovementDirection position;
     static Image image;
     static Texture2D texture;
     static bool initialized;
 
-    Food(std::deque<Vector2> snakeBody);
+    Food(Snake* snake);
 
     void Draw();
 
-    Vector2 GenerateRandomCell();
+    MovementDirection GenerateRandomCell();
 
-    Vector2 GenerateRandomPos(std::deque<Vector2> snakeBody);
+    MovementDirection GenerateRandomPos(Snake* snake);
 
 
 };

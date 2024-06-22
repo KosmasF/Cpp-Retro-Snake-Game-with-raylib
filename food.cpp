@@ -7,9 +7,9 @@ Image Food::image; // Definition of static member variable
 Texture2D Food::texture; // Definition of static member variable
 bool Food::initialized = false;
 
-Food::Food(std::deque<Vector2> snakeBody)
+Food::Food(Snake* snake)
 {
-    position = GenerateRandomPos(snakeBody);
+    position = GenerateRandomPos(snake);
 
     if(!initialized)
     {
@@ -25,17 +25,17 @@ void Food::Draw()
     DrawTexture(texture, offset + position.x * cellSize, offset + position.y * cellSize, WHITE);
 }
 
-Vector2 Food::GenerateRandomCell()
+MovementDirection Food::GenerateRandomCell()
 {
-    float x = GetRandomValue(0, cellCount - 1);
-    float y = GetRandomValue(0, cellCount - 1);
-    return Vector2{x, y};
+    int x = GetRandomValue(0, cellCount - 1);
+    int y = GetRandomValue(0, cellCount - 1);
+    return {x, y};
 }
 
-Vector2 Food::GenerateRandomPos(std::deque<Vector2> snakeBody)
+MovementDirection Food::GenerateRandomPos(Snake* snake)
 {
-    Vector2 position = GenerateRandomCell();
-    while (ElementInDeque(position, snakeBody))
+    MovementDirection position = GenerateRandomCell();
+    while (snake->SnakeIncludes(position, snake->body, snake->bodyCount))
     {
         position = GenerateRandomCell();
     }
