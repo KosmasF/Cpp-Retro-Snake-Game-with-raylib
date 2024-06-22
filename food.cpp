@@ -1,13 +1,23 @@
 #include "food.h"
+#include <iostream>
 
 //Image Food::image 
 //Texture2D Food::texture = LoadTextureFromImage(image);
 Image Food::image; // Definition of static member variable
 Texture2D Food::texture; // Definition of static member variable
+bool Food::initialized = false;
 
 Food::Food(std::deque<Vector2> snakeBody)
 {
     position = GenerateRandomPos(snakeBody);
+
+    if(!initialized)
+    {
+        image = LoadImage("Graphics/food.png");
+        texture = LoadTextureFromImage(image);
+        std::cout<<"Init Food"<<std::endl;
+        initialized = true;
+    }
 }
 
 void Food::Draw()

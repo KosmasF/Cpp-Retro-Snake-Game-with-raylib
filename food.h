@@ -11,19 +11,10 @@ extern bool ElementInDeque(Vector2 element, std::deque<Vector2> deque);
 class Food
 {
 public:
-    friend class constructor;
-
     Vector2 position;
     static Image image;
     static Texture2D texture;
-
-    struct constructor
-    {
-        constructor() {
-            image = LoadImage("Graphics/food.png");
-            texture = LoadTextureFromImage(image);
-        }
-    };
+    static bool initialized;
 
     Food(std::deque<Vector2> snakeBody);
 
@@ -33,6 +24,5 @@ public:
 
     Vector2 GenerateRandomPos(std::deque<Vector2> snakeBody);
 
-    
-    static constructor cons;
+
 };
