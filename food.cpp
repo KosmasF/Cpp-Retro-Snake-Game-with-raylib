@@ -1,7 +1,9 @@
 #include "food.h"
 
-Image Food::image = LoadImage("Graphics/food.png");
-Texture2D Food::texture = LoadTextureFromImage(image);
+//Image Food::image 
+//Texture2D Food::texture = LoadTextureFromImage(image);
+Image Food::image; // Definition of static member variable
+Texture2D Food::texture; // Definition of static member variable
 
 Food::Food(std::deque<Vector2> snakeBody)
 {
