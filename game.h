@@ -4,8 +4,15 @@
 #include "food.h"
 #include "snake.h"
 #include "gameStates.h"
+#include "button.hpp"
+
+#define FONT_SIZE 40
 
 inline bool allowMove;
+
+extern const Color green;
+
+void EnterGame(void* game);
 
 class Game
 {
@@ -37,4 +44,7 @@ private:
     void GameOver();
 
     void CheckCollisionWithTail();
+
+    TextButton mainMenuEnter = TextButton("Play", GetScreenWidth() / 2 - 200, 200, 400, 100, FONT_SIZE);
+
 };

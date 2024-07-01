@@ -20,6 +20,10 @@ void Game::Draw()
     
     if(state == InGameRunning || state == InGameStopped)
     {
+        ClearBackground(green);
+        DrawRectangleLinesEx(Rectangle{(float)offset - 5, (float)offset - 5, (float)cellSize * cellCount + 10, (float)cellSize * cellCount + 10}, 5, darkGreen);
+        DrawText("Retro Snake", offset - 5, 20, 40, darkGreen);
+        DrawText(TextFormat("%i", score), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
         food.Draw();
         snake.Draw();
     }
@@ -28,6 +32,17 @@ void Game::Draw()
         int size = 100;
         Vector2 textOffset = MeasureTextEx(GetFontDefault(), "Game paused!", 100, size/10);
         DrawText("Game paused!", offset + (cellSize * cellCount / 2) - (textOffset.x / 2), offset + (cellSize * cellCount / 2) - (textOffset.y / 2), size, BLACK);
+    }
+    if(state == MainMenu)
+    {
+        const char* txt = "Retro Snake";
+        int length = MeasureText(txt, FONT_SIZE);
+        DrawText(txt, (GetScreenWidth() / 2) - (length / 2), 20, FONT_SIZE, darkGreen);
+        ClearBackground(green);
+
+        mainMenuEnter.Draw();
+        mainMenuEnter.IsPressed(EnterGame, this);
+
     }
 }
 
