@@ -3,6 +3,7 @@
 enum States
 {
     InGameRunning,
+    InGameRunningNoAllowMove,
     InGameStopped,
     InGameSettings,
     MainMenu,

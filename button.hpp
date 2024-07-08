@@ -10,7 +10,7 @@ struct Rect
     int x, y, w, h;
     operator Rectangle()
     {
-        return {x,y,w,h};
+        return {(float)x,(float)y,(float)w,(float)h};
     }
 };
 

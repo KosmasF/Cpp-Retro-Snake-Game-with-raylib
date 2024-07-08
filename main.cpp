@@ -42,23 +42,23 @@ int main()
 
         if (EventTriggered(0.2))
         {
-            allowMove = true;
+            //game.state = InGameRunning;
             game.Update();
         }
 
-        if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1 && allowMove)
+        if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1)
         {
             game.MoveSnake({0, -1});
         }
-        if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1 && allowMove)
+        if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1)
         {
             game.MoveSnake({0, 1});
         }
-        if (IsKeyPressed(KEY_LEFT) && game.snake.direction.x != 1 && allowMove)
+        if (IsKeyPressed(KEY_LEFT) && game.snake.direction.x != 1)
         {
             game.MoveSnake({-1, 0});
         }
-        if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1 && allowMove)
+        if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1)
         {
             game.MoveSnake({1, 0});
         }

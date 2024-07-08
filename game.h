@@ -8,8 +8,6 @@
 
 #define FONT_SIZE 40
 
-inline bool allowMove;
-
 extern const Color green;
 
 void EnterGame(void* game);

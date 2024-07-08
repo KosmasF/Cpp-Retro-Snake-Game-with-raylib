@@ -18,7 +18,7 @@ Game::~Game()
 void Game::Draw()
 {
     
-    if(state == InGameRunning || state == InGameStopped)
+    if(state == InGameRunning || state == InGameStopped || state == InGameRunningNoAllowMove)
     {
         ClearBackground(green);
         DrawRectangleLinesEx(Rectangle{(float)offset - 5, (float)offset - 5, (float)cellSize * cellCount + 10, (float)cellSize * cellCount + 10}, 5, darkGreen);
@@ -59,9 +59,10 @@ void Game::Update()
 
 void Game::MoveSnake(MovementDirection direction)
 {
-    snake.direction = direction;
-    state = InGameRunning;
-    allowMove = false;
+    if(state == InGameRunning)
+        snake.direction = direction;
+    else
+        state = InGameRunning;
 }
 
 void Game::CheckCollisionWithFood()

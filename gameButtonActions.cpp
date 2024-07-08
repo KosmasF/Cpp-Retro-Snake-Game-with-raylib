@@ -2,6 +2,5 @@
 
 void EnterGame(void* game)
 {
-    ((Game*)game)->state = InGameRunning;
-    allowMove = false;
+    ((Game*)game)->state = InGameRunningNoAllowMove;
 }
